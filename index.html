@@ -65,21 +65,27 @@ TikTok • YouTube • Instagram • Facebook • Twitter
 
 <script>
 
-function download(){
+
+async function download(){
 
 let url=document.getElementById("url").value
 
-if(url.includes("tiktok")){
-window.open("https://snaptik.app/en?url="+url)
+let api="https://video-downloader-api--rijalpermana28.replit.app/api"
+
+let res=await fetch(api+"/download?url="+encodeURIComponent(url))
+
+let data=await res.json()
+
+if(data.video){
+
+window.open(data.video)
+
+}else{
+
+alert("Video tidak bisa diambil")
+
 }
 
-else if(url.includes("youtube") || url.includes("youtu.be")){
-window.open("https://y2mate.is/en/youtube-downloader?url="+url)
 }
 
-else if(url.includes("instagram")){
-window.open("https://igram.world/?url="+url)
-}
-
-else if(url.includes("facebook")){
-window.open("https://fdown.net/?
+</script>
